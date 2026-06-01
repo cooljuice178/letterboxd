@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Letterboxd x Douban Movie Shelf</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Personal movie index</p>
+        <h1>Letterboxd x Douban</h1>
+      </div>
+      <div class="header-stats" aria-label="数据概览">
+        <span><strong id="total-count">0</strong> films</span>
+        <span><strong id="matched-count">0</strong> Douban links</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="control-bar" aria-label="筛选电影">
+        <div class="tabs" role="tablist" aria-label="榜单">
+          <button class="tab is-active" type="button" data-list="top500" role="tab">Top 500</button>
+          <button class="tab" type="button" data-list="mostFans" role="tab">Most Fans</button>
+          <button class="tab" type="button" data-list="millionWatched" role="tab">One Million Watched</button>
+        </div>
+        <label class="search-box">
+          <span>Search</span>
+          <input id="search" type="search" placeholder="English / 中文 / year" autocomplete="off" />
+        </label>
+      </section>
+
+      <section class="list-summary" aria-live="polite">
+        <div>
+          <p id="list-label" class="eyebrow">Top 500</p>
+          <h2 id="list-title">Letterboxd Top 500</h2>
+        </div>
+        <p id="list-note"></p>
+      </section>
+
+      <section id="movie-grid" class="movie-grid" aria-label="电影列表"></section>
+      <p id="empty-state" class="empty-state" hidden>No matching films.</p>
+    </main>
+
+    <template id="movie-card-template">
+      <article class="movie-card">
+        <a class="poster-link" target="_blank" rel="noreferrer">
+          <img class="poster" alt="" loading="lazy" />
+          <span class="rank"></span>
+        </a>
+        <div class="movie-body">
+          <div class="title-row">
+            <h3></h3>
+            <span class="year"></span>
+          </div>
+          <p class="cn-title"></p>
+          <div class="metrics">
+            <span class="rating"></span>
+            <span class="watched"></span>
+          </div>
+          <div class="links">
+            <a class="douban" target="_blank" rel="noreferrer">豆瓣</a>
+            <a class="letterboxd" target="_blank" rel="noreferrer">Letterboxd</a>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
